@@ -82,4 +82,48 @@ Una vez instalado zenity vamos a abrir winetricks ejecutando el siguiente comand
 
 > winetricks
 
-Se nos va a mostrar una interfaz y seleccionamos las siguientes opciones 
+Se nos va a mostrar una interfaz y seleccionamos las siguientes opciones:
+
+1. Select the default wineprefix
+2. Si es primera vez que se ejecuta preguntará si deseas enviar estadisticas, presionamos **si** y **aceptar**
+3. Se nos mostrará otro cuadro de opciones seleccionamos **Install a Windows DLL or component**
+4. Elegimos comctl32, jet40, mdac27, mdac28, mfc40, mfc42, vb6run
+5. Pulsamos **aceptar** y decimos **si/yes** a todo.
+
+> En caso de que nos muestre algun error ejecutar winetricks denuevo, pero con el siguiente comando
+
+> sudo winetricks
+
+Para que este tenga permisos de escritura sin ningún problema.
+
+## Instalación de Factusol
+
+Si eres afortunado y tienes el instalador con extensión .msi ejecuta el siguiente comando.
+
+```
+msiexec /l factusolinstalarweb.msi
+```
+
+En caso contrario desde la terminal iremos al escritorio donde podremos nuestro archivo de instalación:
+
+Escribimos en la terminal los siguientes comandos
+
+> ls
+Para saber si aparece "Desktop", sino navegaremos hasta el mismo con el comando **cd**
+
+```
+cd Desktop
+```
+
+Una vez ahí nos aseguramos que esta el archivo otra vez hacemos
+> ls
+
+Si aparece instalador.exe o el nombre del archivo que le hayamos puesto, todo va bien así que procedemos con la instalación
+
+```
+wine nombre_del_archivo.exe
+```
+
+Se ejecutará el instalador y dependiendo del sistema pardeará algunas veces (es normal) por lo tanto esperamos hasta que nos aparezca un cuadro de instalación.
+
+> Asegurate de elegir un directorio personalizado para la instalación ya que lo necesitarás más adelante.
