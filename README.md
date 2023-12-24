@@ -62,6 +62,9 @@ Posteriormente
 ```
 brew install --cask --no-quarantine wine-stable
 ```
+En este caso se necesitará usar x32 así que usaremos el comando: 
+
+>WINEARCH=win32 WINEPREFIX=~/.wine32 winecfg
 
 Una vez finalizado necesitaremos Winetricks
 
