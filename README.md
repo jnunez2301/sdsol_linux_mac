@@ -1,4 +1,8 @@
 # Instalación de Factusol/Contasol MAC y Linux (sdsol_linux_mac)
+
+> Funciona en las versiones 2014 y 2011
+> Se desconoce del funcionamiento en la versiones del 2014 en adelante ya que la mayor parte de estas son instaladas con petición al servidor, sin embargo igualmente se ha includo una guia para los archivos **.exe**
+
 Instalación de programas contasol, factusol y la mayor parte de los software de SDSOL en Linux y Mac
 
 Esta información es la que he recopilado de sitios web como:
@@ -28,6 +32,7 @@ Todos los comandos provienen de su documentación oficial la cual puedes consult
 | Hombre | [Enlace](https://brew.sh/)          |
 | Zenity | [Enlace](https://formulae.brew.sh/formula/zenity) |
 
+
 > Recomiendo encarecidamente que copies y pegues los comandos en la consola para evitar cualquier errata que ocasione que el código no funcione corretamente.
 
 ## Instalando Hombrew
@@ -46,7 +51,7 @@ sudo /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/insta
 
 >Posteriormente te pedirá la contraseña de tu **usuario**, asegurate de escribirla correctamente
 
-## Instando Wine
+## Instando Wine en Mac
 
 Ejecutar los siguientes comandos en consola
 
@@ -63,7 +68,7 @@ Una vez finalizado necesitaremos Winetricks y Zenity, en algunas distribuciones 
 
 En la terminal y si muestra información sobre comandos del mismo lo tienes instalado.
 
-## Instalación de Winetricks y Zenity
+## Instalación de Winetricks y Zenity en Mac
 
 Para instalar **Winetricks** solo hace falta ejecutar el siguiente comando:
 
@@ -90,18 +95,170 @@ Se nos va a mostrar una interfaz y seleccionamos las siguientes opciones:
 4. Elegimos comctl32, jet40, mdac27, mdac28, mfc40, mfc42, vb6run
 5. Pulsamos **aceptar** y decimos **si/yes** a todo.
 
+>También podemos simplificarlo ejecutando
+```
+sudo WINEARCH=win32 WINEPREFIX=/path/to/your/wine/prefix winetricks comctl32 jet40 mdac27 mdac28 mfc40 mfc42 vb6run
+```
+
 > En caso de que nos muestre algun error ejecutar winetricks denuevo, pero con el siguiente comando
 
 > sudo winetricks
 
 Para que este tenga permisos de escritura sin ningún problema.
 
-## Instalación de Factusol
+## Instalación de Factusol/Contasol/DSOL
 
 Si eres afortunado y tienes el instalador con extensión .msi ejecuta el siguiente comando.
 
 ```
-msiexec /l factusolinstalarweb.msi
+msiexec /i nombre_archivo.msi
+```
+Si ese comando no funciona probar
+```
+msiexec /i nombre_archivo.msi /L*V install.log
+```
+
+En caso contrario desde la terminal iremos al escritorio donde podremos nuestro archivo de instalación:
+
+Escribimos en la terminal los siguientes comandos
+
+> ls
+Para saber si aparece "Desktop", sino navegaremos hasta el mismo con el comando **cd**
+
+```
+cd Desktop
+```
+
+Una vez ahí nos aseguramos que esta el archivo otra vez hacemos
+> ls
+
+Si aparece instalador.exe o el nombre del archivo que le hayamos puesto, todo va bien así que procedemos con la instalación
+
+```
+wine nombre_del_archivo.exe
+```
+
+Se ejecutará el instalador y dependiendo del sistema pardeará algunas veces (es normal) por lo tanto esperamos hasta que nos aparezca un cuadro de instalación.
+
+> Asegurate de elegir un directorio personalizado para la instalación ya que lo necesitarás más adelante.
+
+## Guia de instalación en Linux
+
+> Este código fue testeado en una Máquina Virtual de Kali linux
+
+En linux tenemos un poco más de suerte y simplemente tendremos que ejecutar un par de comandos y instalador dos dependencias.
+
+| Dependencia |           Pagina oficial              |
+|--|-------------------------------------|
+| Wine |[Enlace](https://wiki.winehq.org/Debian) | 
+| Winetricks | [Enlace](https://wiki.winehq.org/Winetricks)          |
+
+## Instalando Wine en Linux
+
+Antes de empezar asegurate de tener actualizado tu sistema ejecutando el siguiente comando en la terminal:
+
+```
+sudo apt update && sudo apt upgrade -y
+```
+
+Peparando la máquina, si tu sistema esta en 64 bits, habilita la arquitectura de 32 bits:
+
+```
+sudo dpkg --add-architecture i386
+sudo apt update
+```
+Añadimos el repositorio en caso de no tenerlo
+
+```
+sudo mkdir -pm755 /etc/apt/keyrings
+sudo wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key
+```
+
+Actualizamos
+
+```
+sudo apt update
+```
+
+Instalamos Wine
+```
+sudo apt install wine64 wine32
+```
+
+> Comprobamos que wine ha sido instalado
+
+```
+wine --version
+```
+
+## Instalando Winetricks en Linux
+
+Si tenemos suerte este simple comando funcionará:
+
+```
+sudo dpkg --add-architecture i386
+sudo apt update
+sudo apt install winetricks
+```
+Posteriormente lo abrimos
+```
+winetricks
+```
+
+
+En caso contrario seguiremos de la documentación oficial:
+
+> [Winetricks Documentación Oficial](https://wiki.winehq.org/Winetricks)
+
+Obteniendo winetricks:
+
+```
+cd "${HOME}/Downloads"
+wget  https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks
+chmod +x winetricks
+```
+
+Iniciamos winetricks por primera vez:
+
+```
+sh winetricks corefonts vcrun6 
+```
+
+Algunas dependencias requieren utilziar el Wineprefix:
+
+```
+env WINE=~/wine-git/wine sh winetricks mfc40, n_dependencia 
+```
+
+Se nos va a mostrar una interfaz y seleccionamos las siguientes opciones:
+
+1. Select the default wineprefix
+2. Si es primera vez que se ejecuta preguntará si deseas enviar estadisticas, presionamos **si** y **aceptar**
+3. Se nos mostrará otro cuadro de opciones seleccionamos **Install a Windows DLL or component**
+4. Elegimos comctl32, jet40, mdac27, mdac28, mfc40, mfc42, vb6run
+5. Pulsamos **aceptar** y decimos **si/yes** a todo.
+
+>También podemos simplificarlo ejecutando
+```
+sudo WINEARCH=win32 WINEPREFIX=/path/to/your/wine/prefix winetricks comctl32 jet40 mdac27 mdac28 mfc40 mfc42 vb6run
+```
+
+> En caso de que nos muestre algun error ejecutar winetricks denuevo, pero con el siguiente comando
+
+> sudo winetricks
+
+Para que este tenga permisos de escritura sin ningún problema.
+
+## Instalación de Factusol/Contasol/DSOL
+
+Si eres afortunado y tienes el instalador con extensión .msi ejecuta el siguiente comando.
+
+```
+msiexec /i nombre_archivo.msi
+```
+Si ese comando no funciona probar
+```
+msiexec /i nombre_archivo.msi /L*V install.log
 ```
 
 En caso contrario desde la terminal iremos al escritorio donde podremos nuestro archivo de instalación:
