@@ -90,13 +90,10 @@ Instalamos dependencias
 winetricks comctl32 jet40 mdac27 mdac28 mfc40 mfc42 vb6run
 ```
 
+> En caso de que nos muestre algun error ejecutar winetricks denuevo, pero con el siguiente comando
 ```
 WINEARCH=win32 WINEPREFIX=/path/to/your/wine/prefix winetricks comctl32 jet40 mdac27 mdac28 mfc40 mfc42 vb6run
 ```
-
-> En caso de que nos muestre algun error ejecutar winetricks denuevo, pero con el siguiente comando
-
-> winetricks
 
 Para que este tenga permisos de escritura sin ningún problema.
 
@@ -234,14 +231,8 @@ Se nos va a mostrar una interfaz y seleccionamos las siguientes opciones:
 
 >También podemos simplificarlo ejecutando
 ```
-sudo WINEARCH=win32 WINEPREFIX=/path/to/your/wine/prefix winetricks comctl32 jet40 mdac27 mdac28 mfc40 mfc42 vb6run
+WINEARCH=win32 WINEPREFIX=/path/to/your/wine/prefix winetricks comctl32 jet40 mdac27 mdac28 mfc40 mfc42 vb6run
 ```
-
-> En caso de que nos muestre algun error ejecutar winetricks denuevo, pero con el siguiente comando
-
-> sudo winetricks
-
-Para que este tenga permisos de escritura sin ningún problema.
 
 ## Instalación de Factusol/Contasol/DSOL
 
