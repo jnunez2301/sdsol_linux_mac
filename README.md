@@ -1,10 +1,13 @@
 # Instalación de Factusol/Contasol MAC y Linux (sdsol_linux_mac)
- Instalación de programas contasol, factusol y la mayor parte de los software de SDSOL en Linux y Mac
+Instalación de programas contasol, factusol y la mayor parte de los software de SDSOL en Linux y Mac
 
 Esta información es la que he recopilado de sitios web como:
 
 * [Instalar Factusol en Linux con Wine](https://javiborrasbo.net/formacion/instalar-factusol-en-linux-con-wine/)
-* [Como INstalar Factusol 2011 en Linux-Ubuntu](http://alejandrolopez123.com/110-linux/337-como-instalar-factusol-2011-en-linux-ubuntu)
+
+>> Si eres usuario de ubuntu esta guia será más que suficiente, si tu sistema linux no tiene una "tienda" tendrás que seguir el apartado **Guia de instalación en Linux**
+* [Como Instalar Factusol 2011 en Linux-Ubuntu](http://alejandrolopez123.com/110-linux/337-como-instalar-factusol-2011-en-linux-ubuntu)
+* Para Mac tuve que investigar por mi propia cuenta ya que ambos sistemas son similares.
 
 ## Dependencias
 
@@ -74,3 +77,9 @@ Y posteriormente instalamos Zenity
 brew install zenity
 ```
 Dependiendo de los recusos de tu ordenador podrá tardar desde minutos hasta un par de horas así que acomodate en el sofa y tomate tu tiempo.
+
+Una vez instalado zenity vamos a abrir winetricks ejecutando el siguiente comando en la consola
+
+> winetricks
+
+Se nos va a mostrar una interfaz y seleccionamos las siguientes opciones 
