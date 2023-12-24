@@ -1,6 +1,8 @@
 # Instalación de Factusol/Contasol MAC y Linux (sdsol_linux_mac)
+> Si tienes una PC con buen rendimiento te recomiendo utilizar Virtual Box y montar una imagen de Windows 8 o superior siguiendo las especificaciones del programa.
 
-> Funciona en las versiones 2014 y 2011
+> Funciona en las version 2011
+
 > Se desconoce del funcionamiento en la versiones del 2014 en adelante ya que la mayor parte de estas son instaladas con petición al servidor, sin embargo igualmente se ha includo una guia para los archivos **.exe**
 
 Instalación de programas contasol, factusol y la mayor parte de los software de SDSOL en Linux y Mac
@@ -29,9 +31,7 @@ Todos los comandos provienen de su documentación oficial la cual puedes consult
 | Dependencia |           Pagina oficial              |
 |--|-------------------------------------|
 | Wine |[Enlace](https://wiki.winehq.org/MacOS) | 
-| Hombre | [Enlace](https://brew.sh/)          |
-| Zenity | [Enlace](https://formulae.brew.sh/formula/zenity) |
-
+| Hombrew | [Enlace](https://brew.sh/)          |
 
 > Recomiendo encarecidamente que copies y pegues los comandos en la consola para evitar cualquier errata que ocasione que el código no funcione corretamente.
 
@@ -63,12 +63,11 @@ Posteriormente
 brew install --cask --no-quarantine wine-stable
 ```
 
-Una vez finalizado necesitaremos Winetricks y Zenity, en algunas distribuciones de Mac Zenity ya viene instalado por defecto así que compruebalo ejecutando el comando 
-> zenity --help
+Una vez finalizado necesitaremos Winetricks
 
 En la terminal y si muestra información sobre comandos del mismo lo tienes instalado.
 
-## Instalación de Winetricks y Zenity en Mac
+## Instalación de Winetricks
 
 Para instalar **Winetricks** solo hace falta ejecutar el siguiente comando:
 
@@ -76,33 +75,25 @@ Para instalar **Winetricks** solo hace falta ejecutar el siguiente comando:
 brew install winetricks
 ```
 
-Y posteriormente instalamos Zenity
-
-```
-brew install zenity
-```
 Dependiendo de los recusos de tu ordenador podrá tardar desde minutos hasta un par de horas así que acomodate en el sofa y tomate tu tiempo.
 
-Una vez instalado zenity vamos a abrir winetricks ejecutando el siguiente comando en la consola
-
+Comprobamos que se ha instalado
 > winetricks
 
-Se nos va a mostrar una interfaz y seleccionamos las siguientes opciones:
-
-1. Select the default wineprefix
-2. Si es primera vez que se ejecuta preguntará si deseas enviar estadisticas, presionamos **si** y **aceptar**
-3. Se nos mostrará otro cuadro de opciones seleccionamos **Install a Windows DLL or component**
-4. Elegimos comctl32, jet40, mdac27, mdac28, mfc40, mfc42, vb6run
-5. Pulsamos **aceptar** y decimos **si/yes** a todo.
+Instalamos dependencias
 
 >También podemos simplificarlo ejecutando
 ```
-sudo WINEARCH=win32 WINEPREFIX=/path/to/your/wine/prefix winetricks comctl32 jet40 mdac27 mdac28 mfc40 mfc42 vb6run
+winetricks comctl32 jet40 mdac27 mdac28 mfc40 mfc42 vb6run
+```
+
+```
+WINEARCH=win32 WINEPREFIX=/path/to/your/wine/prefix winetricks comctl32 jet40 mdac27 mdac28 mfc40 mfc42 vb6run
 ```
 
 > En caso de que nos muestre algun error ejecutar winetricks denuevo, pero con el siguiente comando
 
-> sudo winetricks
+> winetricks
 
 Para que este tenga permisos de escritura sin ningún problema.
 
@@ -182,7 +173,7 @@ sudo apt update
 
 Instalamos Wine
 ```
-sudo apt install wine64 wine32
+sudo apt install --install-recommends winehq-stable
 ```
 
 > Comprobamos que wine ha sido instalado
@@ -284,3 +275,60 @@ wine nombre_del_archivo.exe
 Se ejecutará el instalador y dependiendo del sistema pardeará algunas veces (es normal) por lo tanto esperamos hasta que nos aparezca un cuadro de instalación.
 
 > Asegurate de elegir un directorio personalizado para la instalación ya que lo necesitarás más adelante.
+
+## Notes
+Test and Run in case of errors
+```
+exec=env WINEPREFIX="/home/kali/.wine" wine C: and so on
+
+```
+
+ >If you're having trouble with Wine and Mono (the open-source implementation of Microsoft's .NET Framework) on Linux, and it's not installed, you may need to install it manually. Here are steps to do that:
+
+1. **Open a Terminal:**
+   Open a terminal on your Linux system.
+
+2. **Install Mono:**
+   Use your package manager to install Mono. The command may vary depending on your Linux distribution. Here are examples for some popular distributions:
+
+   - **Ubuntu/Debian:**
+     ```bash
+     sudo apt-get install mono-complete
+     ```
+
+   - **Fedora:**
+     ```bash
+     sudo dnf install mono-complete
+     ```
+
+   - **Arch Linux:**
+     ```bash
+     sudo pacman -S mono
+     ```
+
+   - **openSUSE:**
+     ```bash
+     sudo zypper install mono-complete
+     ```
+
+   Choose the appropriate command based on your distribution.
+
+3. **Verify Mono Installation:**
+   After installation, you can verify if Mono is installed by running:
+
+   ```bash
+   mono --version
+   ```
+
+   This should display information about the installed Mono version.
+
+4. **Run Wine Configuration:**
+   You may also want to run the Wine configuration tool (`winecfg`) to ensure that Mono is recognized by Wine. In the terminal, type:
+
+   ```bash
+   winecfg
+   ```
+
+   In the "Libraries" tab, make sure that "mscoree" is set to "Native (Windows)" and click "Apply" or "OK."
+
+After these steps, Mono should be installed and recognized by Wine. If you encounter any issues during the installation or if you have a specific error message, please provide more details so that I can assist you further.
