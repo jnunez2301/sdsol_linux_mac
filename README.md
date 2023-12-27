@@ -6,37 +6,36 @@ Este código se ha testeado en una Mac Book Pro que debido a problemas de comati
 
 ## Instalar Wine
 
-> sudo dpkg --add-architecture i386 
+```sudo dpkg --add-architecture i386 ```
 
 ```
 sudo mkdir -pm755 /etc/apt/keyrings
 sudo wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key
 ```
 
-> sudo wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists/jammy/winehq-jammy.sources
+```sudo wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists/jammy/winehq-jammy.sources```
 
-> sudo apt update
+```sudo apt update```
 
-> sudo apt install --install-recommends winehq-stable
+```sudo apt install --install-recommends winehq-stable```
 
 ## Instalar las dependencias con wine32
 
-> WINEARCH=win32 WINEPREFIX=~/wine32 winetricks jet40 mdac27 mdac28 mfc40 mfc42 vb6run
+```WINEARCH=win32 WINEPREFIX=~/wine32 winetricks jet40 mdac27 mdac28 mfc40 mfc42 vb6run```
 
 También con winetricks corriendo en wine64
 
-> winetricks jet40 mdac27 mdac28 mfc40 mfc42 vb6run
+```winetricks jet40 mdac27 mdac28 mfc40 mfc42 vb6run```
 
 
 
 Comandos extra en caso de que de problemas de dependencias.
 
-> winetricks native_mdac
-> winetricks native_oleaut32
+```winetricks native_mdac```
+```winetricks native_oleaut32```
 
 ## Una vez tenemos el instalador de Factusol-2011/Contasol-2011
 
 Ejecutamos el siguiente comando en la carpeta donde se ha descargado.
 
-> WINEARCH=win32 WINEPREFIX=~/wine32 wine nombre_instalador.msi
-
+```WINEARCH=win32 WINEPREFIX=~/wine32 wine nombre_instalador.msi```
