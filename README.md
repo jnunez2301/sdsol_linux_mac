@@ -39,11 +39,13 @@ sudo apt install --install-recommends winehq-stable
 
 ## Instalar las dependencias con wine32
 
+> Si al realizar la instalación Wine solicita instalar wine-mono darle instalar para evitar errores.
+
 ```
 WINEARCH=win32 WINEPREFIX=~/wine32 winetricks jet40 mdac27 mdac28 mfc40 mfc42 vb6run
 ```
 
-También con winetricks corriendo en wine64
+También con winetricks corriendo en wine64 para evitar problemas de dependencias
 
 ```
 winetricks jet40 mdac27 mdac28 mfc40 mfc42 vb6run
@@ -67,3 +69,14 @@ Ejecutamos el siguiente comando en la carpeta donde se ha descargado.
 ```
 WINEARCH=win32 WINEPREFIX=~/wine32 wine nombre_instalador.msi
 ```
+
+Posteriormente dispondremos de un acceso directo en el escritorio
+
+## Problemas con fechas
+
+Se suele dar el caso que aveces el sistema no detecta las fechas correctamente y nos da la fecha en formato D/M/YYYY para solucionar este problema debeís ir a
+
+1. Configuración
+2. Lenguajes y Regiones
+3. Cambiar el idioma a English (UK) o Español(España)
+4. Cambiar el Fomato de fecha al de Francia o España
