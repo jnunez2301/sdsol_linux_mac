@@ -5,6 +5,12 @@ Este código se ha testeado en una Mac Book Pro que debido a problemas de comati
 | Programas Necesarios | Fuente |
 |--|--|
 | Wine | [Enlace](https://wiki.winehq.org/Download) |
+| Winetricks | [Enlace](https://wiki.winehq.org/Winetricks) |
+
+> Si usas Ubuntu puedes obtener winetricks desde la tienda de Ubuntu o también puedes usar el comando:
+```
+sudo apt-get install winetricks
+```
 
 > Si eres usuario de una Mac Book Pro antigua te recomiendo encarecidamente instalar Ubuntu para evitar problemas de compatibilidad, aunque puedes intentar realizar estos metodos con brew a mi me fue una tarea imposible realizar la instalación con Hombrew.
 
