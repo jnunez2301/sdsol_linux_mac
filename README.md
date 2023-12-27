@@ -2,6 +2,10 @@
 
 Este código se ha testeado en una Mac Book Pro que debido a problemas de comatibilidad se le ha instalado el Ubuntu 22.04 siendo la versión que da mejor compatibilidad con dicho dispositivo.
 
+| Programas Necesarios | Fuente |
+|--|--|
+| Wine | [Enlace](https://wiki.winehq.org/Download) |
+
 > Si eres usuario de una Mac Book Pro antigua te recomiendo encarecidamente instalar Ubuntu para evitar problemas de compatibilidad, aunque puedes intentar realizar estos metodos con brew a mi me fue una tarea imposible realizar la instalación con Hombrew.
 
 ## Instalar Wine
